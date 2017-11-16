@@ -3,12 +3,26 @@ package edu.seminolestate.properties;
 public abstract class Property {
 	private int propertyID;
 	private String address;
+	private String city;
 	private String state;
 	private String zip;
 	private double value;
 	private double squareFeet;
 	private double numberOfBaths;
 	private int numberOfBedrooms;
+	
+	public Property(int propertyID, String address, String city, String state, String zip, double value,
+			double squareFeet, double numberOfBaths, int numberOfBedrooms) {
+		this.setPropertyID(propertyID);
+		this.setAddress(address);
+		this.setCity(city); //need to do get and set on this
+		this.setState(state);
+		this.setZip(zip);
+		this.setValue(value);
+		this.setSquareFeet(squareFeet);
+		this.setNumberOfBaths(numberOfBaths);
+		this.setNumberOfBedrooms(numberOfBedrooms);
+	}
 	
 	public int getPropertyID() {
 		return propertyID;
