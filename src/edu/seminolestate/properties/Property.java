@@ -65,5 +65,9 @@ public abstract class Property {
 	public void setNumberOfBedrooms(int numberOfBedrooms) {
 		this.numberOfBedrooms = numberOfBedrooms;
 	}
+	
+	public String toString( ) {
+		return "change this";
+	}
 
 }
