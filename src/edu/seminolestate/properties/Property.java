@@ -2,7 +2,7 @@ package edu.seminolestate.properties;
 
 import java.io.Serializable;
 
-public abstract class Property implements Serializable {
+public abstract class Property implements Serializable, Comparable<Property> {
 	private static final long serialVersionUID = 1L;
 	private int propertyID;
 	private String address;
