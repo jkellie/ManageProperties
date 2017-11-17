@@ -119,7 +119,15 @@ public abstract class Property implements Serializable, Comparable<Property> {
 	
 	@Override
 	public String toString( ) {
-		return "change this";
+		return getClass() + " [propertyID=" + propertyID + ", "
+				+ "address=" + address + ", "
+				+ "city=" + city + ", "
+				+ "state=" + state + ", "
+				+ "zip=" + zip + ", "
+				+ "value=" + value + ", "
+				+ "squareFeet=" + squareFeet + ", "
+				+ "numberOfBaths=" + numberOfBaths + ", "
+				+ "numberOfBedrooms=" + numberOfBedrooms + "]";
 	}
 	
 	@Override
