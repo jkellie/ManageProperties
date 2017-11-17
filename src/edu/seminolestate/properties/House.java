@@ -1,6 +1,9 @@
 package edu.seminolestate.properties;
 
-public class House extends Property {
+import java.io.Serializable;
+
+public class House extends Property implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private double lotSize;
 	
 

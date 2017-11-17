@@ -1,6 +1,9 @@
 package edu.seminolestate.properties;
 
-public abstract class Property {
+import java.io.Serializable;
+
+public abstract class Property implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private int propertyID;
 	private String address;
 	private String city;
