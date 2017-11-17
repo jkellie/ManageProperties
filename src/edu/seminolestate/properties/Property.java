@@ -93,5 +93,10 @@ public abstract class Property implements Serializable, Comparable<Property> {
 	public String toString( ) {
 		return "change this";
 	}
+	
+	@Override
+	public int compareTo(Property objToComp) {
+		return (int) (this.value - objToComp.value);
+	}
 
 }

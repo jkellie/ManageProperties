@@ -5,7 +5,6 @@ import java.io.Serializable;
 public class House extends Property implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private double lotSize;
-	
 
 	public House(int propertyID, String address, String city, String state, String zip, double value,
 			double squareFeet, double numberOfBaths, int numberOfBedrooms, double lotSize) {
