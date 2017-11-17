@@ -40,29 +40,41 @@ public abstract class Property implements Serializable, Comparable<Property> {
 	public String getAddress() {
 		return address;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setAddress(String address) throws IllegalPropertyException {
+		if (address != null || address.length() > 0)
+			this.address = address;
+		else
+			throw new IllegalPropertyException("An address value must be entered");
 	}
 	
 	public String getCity() {
 		return city;
 	}
-	public void setCity(String city) {
-		this.city = city;
+	public void setCity(String city) throws IllegalPropertyException {
+		if (city != null || city.length() > 0)
+			this.city = city;
+		else
+			throw new IllegalPropertyException("A city value must be entered");
 	}
 	
 	public String getState() {
 		return state;
 	}
-	public void setState(String state) {
-		this.state = state;
+	public void setState(String state) throws IllegalPropertyException {
+		if (state != null || state.length() > 0)
+			this.state = state;
+		else
+			throw new IllegalPropertyException("A state value must be entered");
 	}
 	
 	public String getZip() {
 		return zip;
 	}
-	public void setZip(String zip) {
-		this.zip = zip;
+	public void setZip(String zip) throws IllegalPropertyException {
+		if (zip != null || zip.length() > 0)
+			this.zip = zip;
+		else
+			throw new IllegalPropertyException("A zipcode value must be entered");
 	}
 	
 	public double getValue()  {
