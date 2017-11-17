@@ -15,7 +15,7 @@ public abstract class Property {
 			double squareFeet, double numberOfBaths, int numberOfBedrooms) {
 		this.setPropertyID(propertyID);
 		this.setAddress(address);
-		this.setCity(city); //need to do get and set on this
+		this.setCity(city);
 		this.setState(state);
 		this.setZip(zip);
 		this.setValue(value);
