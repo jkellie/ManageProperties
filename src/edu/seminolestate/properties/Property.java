@@ -15,7 +15,7 @@ public abstract class Property implements Serializable, Comparable<Property> {
 	private int numberOfBedrooms;
 	
 	public Property(int propertyID, String address, String city, String state, String zip, double value,
-			double squareFeet, double numberOfBaths, int numberOfBedrooms) {
+			double squareFeet, double numberOfBaths, int numberOfBedrooms) throws IllegalPropertyException {
 		this.setPropertyID(propertyID);
 		this.setAddress(address);
 		this.setCity(city);
@@ -30,8 +30,11 @@ public abstract class Property implements Serializable, Comparable<Property> {
 	public int getPropertyID() {
 		return propertyID;
 	}
-	public void setPropertyID(int propertyID) {
-		this.propertyID = propertyID;
+	public void setPropertyID(int propertyID) throws IllegalPropertyException {
+		if (propertyID > 0)
+			this.propertyID = propertyID;
+		else
+			throw new IllegalPropertyException("The property id entered must be greater than 0.");
 	}
 	
 	public String getAddress() {
@@ -62,34 +65,47 @@ public abstract class Property implements Serializable, Comparable<Property> {
 		this.zip = zip;
 	}
 	
-	public double getValue() {
+	public double getValue()  {
 		return value;
 	}
-	public void setValue(double value) {
-		this.value = value;
+	public void setValue(double value) throws IllegalPropertyException {
+		if (value > 0)
+			this.value = value;
+		else
+			throw new IllegalPropertyException("The value entered must be greater than 0.");	
 	}
 	
 	public double getSquareFeet() {
 		return squareFeet;
 	}
-	public void setSquareFeet(double squareFeet) {
-		this.squareFeet = squareFeet;
+	public void setSquareFeet(double squareFeet) throws IllegalPropertyException {
+		if (squareFeet > 0)
+			this.squareFeet = squareFeet;
+		else
+			throw new IllegalPropertyException("The square feet entered must be greater than 0.");
 	}
 	
 	public double getNumberOfBaths() {
 		return numberOfBaths;
 	}
-	public void setNumberOfBaths(double numberOfBaths) {
-		this.numberOfBaths = numberOfBaths;
+	public void setNumberOfBaths(double numberOfBaths) throws IllegalPropertyException {
+		if (numberOfBaths > 0)
+			this.numberOfBaths = numberOfBaths;
+		else
+			throw new IllegalPropertyException("The number of bathrooms entered must be greater than 0.");
 	}
 	
 	public int getNumberOfBedrooms() {
 		return numberOfBedrooms;
 	}
-	public void setNumberOfBedrooms(int numberOfBedrooms) {
-		this.numberOfBedrooms = numberOfBedrooms;
+	public void setNumberOfBedrooms(int numberOfBedrooms) throws IllegalPropertyException {
+		if (numberOfBedrooms > 0)
+			this.numberOfBedrooms = numberOfBedrooms;
+		else
+			throw new IllegalPropertyException("The number of bedrooms entered must be greater than 0.");
 	}
 	
+	@Override
 	public String toString( ) {
 		return "change this";
 	}
