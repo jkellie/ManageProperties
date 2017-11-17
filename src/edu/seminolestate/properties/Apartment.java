@@ -7,7 +7,8 @@ public class Apartment extends Property implements Serializable {
 	private double unitRent;
 	
 	public Apartment(int propertyID, String address, String city, String state, String zip, double value,
-			double squareFeet, double numberOfBaths, int numberOfBedrooms, double unitRent) {
+			double squareFeet, double numberOfBaths, int numberOfBedrooms, double unitRent)
+					throws IllegalPropertyException {
 		super(propertyID, address, city, state, zip, value, squareFeet, numberOfBaths, numberOfBedrooms);
 		this.setUnitRent(unitRent);
 	}
@@ -15,12 +16,16 @@ public class Apartment extends Property implements Serializable {
 	public double getUnitRent() {
 		return unitRent;
 	}
-	public void setUnitRent(double unitRent) {
-		this.unitRent = unitRent;
+	public void setUnitRent(double unitRent) throws IllegalPropertyException {
+		if (unitRent > 0)
+			this.unitRent = unitRent;
+		else
+			throw new IllegalPropertyException("The unit rent entered must be greater than 0.");
 	}
 	
 	public String toString( ) {
-		return "change this";
+		return super.toString() + " " +
+				getClass() + " [unitRent=" + unitRent + "]";
 	}
 
 }
