@@ -117,6 +117,27 @@ public class ManageProperties {
 		}
 	}
 	
+	public static void deleteProperty() {
+		if (properties.isEmpty())
+			System.out.println("There are no properties to delete");
+		else {
+			boolean found = false;
+			int compare;
+			int propertyID = getInteger("Enter the property ID you wish to delete: ");
+			for (int i = 0; i < properties.size(); i++) {
+				compare = (properties.get(i)).getPropertyID();
+				if (compare == propertyID) {
+					found = true;
+					properties.remove(i);
+					System.out.println("Property removed");
+				}
+			}
+			if (found == false)
+				System.out.println("Property not found.");
+		}
+	}
+
+	
 	public static  String getString(String prompt) {
 		String userValue = null;
 		do {
@@ -126,7 +147,6 @@ public class ManageProperties {
 				System.out.println("You must enter a value.");
 			}
 		} while (userValue == null || userValue.length() < 1); 
-		
 		return userValue;
 	}
 	
@@ -150,7 +170,6 @@ public class ManageProperties {
 				System.out.println("Enter only decimal numbers.");
 			}
 		} while (! isValidDouble);
-		
 		return validDouble;
 	}
 	
@@ -174,7 +193,6 @@ public class ManageProperties {
 				System.out.println("Only enter numbers.");
 			}
 		} while (! isValidInteger);
-		
 		return validInteger;
 	}
 
