@@ -5,8 +5,6 @@ import edu.seminolestate.properties.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import edu.seminolestate.properties.Property;
-
 
 public class ManageProperties {
 	private static ArrayList<Property> properties = new ArrayList<>();
@@ -71,6 +69,90 @@ public class ManageProperties {
 			}
 		} while (menuChoice < ADD_HOUSE || menuChoice > EXIT);
 		return menuChoice;
+	}
+	
+	public static void addHouse() {
+		int propertyID = getInteger("Enter the property ID: ");
+		String address = getString("Enter the property address: ");
+		String city = getString("Enter the city: ");
+		String state = getString("Enter the state");
+		String zip = getString("Enter the zipcode: ");
+		double value = getDouble("Enter the property value: ");
+		double squareFeet = getDouble("Enter the square feet: ");
+		double numberOfBaths = getDouble("How many baths?: ");
+		int numberOfBedrooms = getInteger("How many bedrooms?: ");
+		double lotSize = getDouble("Enter the lot size: ");
+		House house = null;
+		try {
+			house = new House(propertyID, address, city, state, zip, value, squareFeet,
+					numberOfBaths, numberOfBedrooms, lotSize);
+			properties.add(house);
+		}
+		catch (IllegalPropertyException e) {
+			System.out.println("Couldn't create the house object but the application will continue.");
+			e.printStackTrace();
+		}
+	}
+	
+	public static  String getString(String prompt) {
+		String userValue = null;
+		do {
+			System.out.println(prompt);
+			userValue = keyboard.nextLine();
+			if (userValue == null || userValue.length() < 1) {
+				System.out.println("You must enter a value.");
+			}
+		} while (userValue == null || userValue.length() < 1); 
+		
+		return userValue;
+	}
+	
+	public static double getDouble(String prompt) {
+		String userValue = null;
+		double validDouble = 0;
+		boolean isValidDouble = false;
+		do {
+			System.out.println(prompt);
+			try {
+				userValue = keyboard.nextLine();
+				validDouble = Double.parseDouble(userValue);
+				if (validDouble > 0) {
+					isValidDouble = true;
+				}
+				else {
+					System.out.println("Enter a value > 0.");
+				}
+			}
+			catch (NumberFormatException e) {
+				System.out.println("Enter only decimal numbers.");
+			}
+		} while (! isValidDouble);
+		
+		return validDouble;
+	}
+	
+	public static int getInteger(String prompt) {
+		String userValue = null;
+		int validInteger = 0;
+		boolean isValidInteger = false;
+		do {
+			System.out.println(prompt);
+			try {
+				userValue = keyboard.nextLine();
+				validInteger = Integer.parseInt(userValue);
+				if (validInteger > 0) {
+					isValidInteger = true;
+				}
+				else {
+					System.out.println("Enter a value > 0.");
+				}
+			}
+			catch (NumberFormatException e) {
+				System.out.println("Only enter numbers.");
+			}
+		} while (! isValidInteger);
+		
+		return validInteger;
 	}
 
 }
