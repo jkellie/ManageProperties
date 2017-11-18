@@ -11,7 +11,7 @@ public class ManageProperties {
 	
 	private static Scanner keyboard = new Scanner(System.in);
 	private static final int ADD_HOUSE = 1;
-	private static final int ADD_APPARTMENT = 2;
+	private static final int ADD_APARTMENT = 2;
 	private static final int DELETE_PROPERTY = 3;
 	private static final int LIST_BY_VALUE = 4;
 	private static final int LIST_BY_ZIP = 5;
@@ -25,8 +25,8 @@ public class ManageProperties {
 			case ADD_HOUSE:
 				addHouse();
 				break;
-			case ADD_APPARTMENT:
-				addAppartment();
+			case ADD_APARTMENT:
+				addApartment();
 				break;
 			case DELETE_PROPERTY:
 				deleteProperty();
@@ -49,7 +49,7 @@ public class ManageProperties {
 		do {
 			System.out.println("Enter your choice: ");
 			System.out.println(ADD_HOUSE + ". Add a house");
-			System.out.println(ADD_APPARTMENT + ". Add an appartment");
+			System.out.println(ADD_APARTMENT + ". Add an appartment");
 			System.out.println(DELETE_PROPERTY + ". Delete a property");
 			System.out.println(LIST_BY_VALUE + ". List by value");
 			System.out.println(LIST_BY_ZIP + ". List by zipcode");
@@ -90,6 +90,29 @@ public class ManageProperties {
 		}
 		catch (IllegalPropertyException e) {
 			System.out.println("Couldn't create the house object but the application will continue.");
+			e.printStackTrace();
+		}
+	}
+	
+	public static void addApartment() {
+		int propertyID = getInteger("Enter the property ID: ");
+		String address = getString("Enter the property address: ");
+		String city = getString("Enter the city: ");
+		String state = getString("Enter the state");
+		String zip = getString("Enter the zipcode: ");
+		double value = getDouble("Enter the property value: ");
+		double squareFeet = getDouble("Enter the square feet: ");
+		double numberOfBaths = getDouble("How many baths?: ");
+		int numberOfBedrooms = getInteger("How many bedrooms?: ");
+		double unitRent = getDouble("Enter the rent for the unit: ");
+		Apartment apartment = null;
+		try {
+			apartment = new Apartment(propertyID, address, city, state, zip, value, squareFeet,
+					numberOfBaths, numberOfBedrooms, unitRent);
+			properties.add(apartment);
+		}
+		catch (IllegalPropertyException e) {
+			System.out.println("Couldn't create the apartment object but the application will continue.");
 			e.printStackTrace();
 		}
 	}
