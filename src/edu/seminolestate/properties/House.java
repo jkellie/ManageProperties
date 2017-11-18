@@ -12,7 +12,7 @@ public class House extends Property implements Serializable {
 		super(propertyID, address, city, state, zip, value, squareFeet, numberOfBaths, numberOfBedrooms);
 		this.setLotSize(lotSize);
 	}
-	
+
 	public double getLotSize() {
 		return lotSize;
 	}
