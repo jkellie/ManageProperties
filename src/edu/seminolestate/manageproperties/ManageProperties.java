@@ -2,6 +2,10 @@ package edu.seminolestate.manageproperties;
 
 import edu.seminolestate.properties.*;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -17,6 +21,9 @@ public class ManageProperties {
 	private static final int LIST_BY_VALUE = 4;
 	private static final int LIST_BY_ZIP = 5;
 	private static final int EXIT = 6;
+	
+	private static final String FILE_NAME = "properties.dat";
+	static File outputFile = new File(FILE_NAME); 
 
 	public static void main(String[] args) {
 		int choice = 0;
@@ -38,6 +45,7 @@ public class ManageProperties {
 			case LIST_BY_ZIP:
 				listByZip();
 			case EXIT:
+				writeBinary();
 				System.out.println("Thanks for using the Property Manager!");
 			}
 		} while (choice != EXIT);
@@ -156,6 +164,22 @@ public class ManageProperties {
 			Collections.sort(properties, new PropertyZipComparator());
 			for (int i = 0; i < properties.size(); i++) {
 				System.out.println((properties.get(i)).toString());
+			}
+		}
+	}
+	
+	public static void writeBinary() {
+		if (!properties.isEmpty()) {
+			//write each object to a binary file. Use try with resources
+			try (FileOutputStream foStream = new FileOutputStream(outputFile);
+		        	 ObjectOutputStream ooStream = new ObjectOutputStream(foStream); ) {
+				for (int i = 0; i < properties.size(); i++) {
+					ooStream.writeObject(properties.get(i));
+				}
+			} catch (IOException e) {
+				System.out.println("Shutting down");
+				e.printStackTrace();
+				System.exit(-1);
 			}
 		}
 	}
