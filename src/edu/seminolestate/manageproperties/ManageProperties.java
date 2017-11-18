@@ -198,8 +198,7 @@ public class ManageProperties {
 	        		properties.add(property);
 	        	}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("The " + FILE_NAME + " file was loaded successfully.");
 		} catch (ClassNotFoundException e) {
 			System.out.println("Serialization version error.");
 			System.out.println("Shutting down");
