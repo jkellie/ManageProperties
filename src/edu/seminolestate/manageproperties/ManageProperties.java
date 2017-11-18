@@ -129,7 +129,7 @@ public class ManageProperties {
 				if (compare == propertyID) {
 					found = true;
 					properties.remove(i);
-					System.out.println("Property removed");
+					System.out.println("Property removed.");
 				}
 			}
 			if (found == false)
