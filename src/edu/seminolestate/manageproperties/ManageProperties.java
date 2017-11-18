@@ -3,6 +3,7 @@ package edu.seminolestate.manageproperties;
 import edu.seminolestate.properties.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 
@@ -37,7 +38,7 @@ public class ManageProperties {
 			case LIST_BY_ZIP:
 				listByZip();
 			case EXIT:
-				System.out.println("Thanks for using Property Pro!");
+				System.out.println("Thanks for using the Property Manager!");
 			}
 		} while (choice != EXIT);
 
@@ -136,7 +137,28 @@ public class ManageProperties {
 				System.out.println("Property not found.");
 		}
 	}
+	
+	public static void listByValue() {
+		if (properties.isEmpty())
+			System.out.println("There are no properties to list");
+		else {
+			Collections.sort(properties);
+			for (int i = 0; i < properties.size(); i++) {
+				System.out.println((properties.get(i)).toString());
+			}
+		}
+	}
 
+	public static void listByZip() {
+		if (properties.isEmpty())
+			System.out.println("There are no properties to list");
+		else {
+			Collections.sort(properties, new PropertyZipComparator());
+			for (int i = 0; i < properties.size(); i++) {
+				System.out.println((properties.get(i)).toString());
+			}
+		}
+	}
 	
 	public static  String getString(String prompt) {
 		String userValue = null;
