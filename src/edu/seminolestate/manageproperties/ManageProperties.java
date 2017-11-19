@@ -79,7 +79,7 @@ public class ManageProperties {
 			}
 			
 			if (menuChoice < ADD_HOUSE || menuChoice > EXIT){
-				System.out.println("Invalid value. Enter a value between" + ADD_HOUSE
+				System.out.println("Invalid value. Enter a value between " + ADD_HOUSE
 						+ " and " + EXIT);
 			}
 		} while (menuChoice < ADD_HOUSE || menuChoice > EXIT);
