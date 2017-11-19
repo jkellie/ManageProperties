@@ -1,5 +1,7 @@
 package edu.seminolestate.manageproperties;
 
+// Author: Jason Kellie - 11/19/17
+
 import edu.seminolestate.properties.*;
 
 import java.io.File;

@@ -1,5 +1,7 @@
 package edu.seminolestate.properties;
 
+//Author: Jason Kellie - 11/19/17
+
 import java.io.Serializable;
 
 public abstract class Property implements Serializable, Comparable<Property> {
